@@ -153,7 +153,11 @@ qtidisplay_cc_defaults {
     defaults: ["qtidisplay_common_defaults"],
     soong_config_variables: {
         default: {
-            header_libs: ["display_headers", "qti_kernel_headers"],
+            header_libs: [
+                "nx809j_qti_display_uapi", // NX809J: msm_drm_aiqe.h + display UAPI
+                "display_headers",
+                "qti_kernel_headers",
+            ],
         },
         headless: {
             header_libs: ["display_headers"],
@@ -295,12 +299,15 @@ cc_library_headers {
         "libhistogram",
     ],
     header_libs: [
+        "nx809j_qti_display_uapi",
+        "libdrmutils_local_headers_nx809j",
         "libhardware_headers",
         "display_intf_headers",
         "display_debug_headers",
         "display_core_headers",
     ],
     export_header_lib_headers: [
+        "nx809j_qti_display_uapi",
         "libhardware_headers",
         "display_intf_headers",
         "display_debug_headers",
